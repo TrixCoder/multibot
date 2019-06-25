@@ -646,11 +646,6 @@ async def avatar(ctx, user: discord.Member=None):
     else:
         await client.say(user.avatar_url)
 	
-@bot.command(pass_context=True, no_pm=True)
-async def avatar(ctx, member: discord.Member):
-    """User Avatar"""
-    await bot.reply("{}".format(member.avatar_url))
-
 @client.command(pass_context=True)
 @commands.check(is_dark)
 async def botdm(ctx, identification:str, *, msg: str):
