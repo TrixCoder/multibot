@@ -641,10 +641,19 @@ async def meme(ctx):
 		
 @client.command(pass_context = True)
 async def avatar(ctx, user: discord.Member=None):
-    if user is None:        
-        await client.say(ctx.message.author.avatar_url)
+    if user is None:
+        member = ctx.message.author
+        r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+        mem = discord.Embed(title=f'Avatar', description='Avatar is profile picture of a user in discord', color = discord.Color((r << 16) + (g << 8) + b))
+        mem.add_field(name='User: {}'.format(ctx.message.author.name), value='Avatar:', inline=True)
+        mem.set_image(url = member.avatar_url)
+        await client.say(embed=mem)
     else:
-        await client.say(user.avatar_url)
+        r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+        embed = discord.Embed(title=f'Avatar', description='Avatar is profile picture of a user in discord', color = discord.Color((r << 16) + (g << 8) + b))
+        embed.add_field(name='User: {}'.format(user.name), value='Avatar:', inline=True)
+        embed.set_image(url = user.avatar_url)
+        await client.say(embed=embed)
 	
 @client.command(pass_context=True)
 @commands.check(is_dark)
