@@ -1118,11 +1118,7 @@ async def help(ctx):
       embed.add_field(name = 'Community Commands ',value ='``mv!google anything``, ``mv!youtuber anything``, ``mv!invites``, ``mv!remind <time in minutes> <what to remind>``__EX:__``mv!remind 1 drink water`` to get reminder in 1min for drinking water, ``mv!avatar``, ``mv!ping``, ``mv!poll Question option1 option2...option9``, ``mv!github respo name``, ``mv!happybirthday @user``, ``mv!joke``, ``mv!kiss @user``, ``mv!hug @user``, ``mv!slap @user``, ``mv!meme``, ``mv!rolldice``, ``mv!movie movie name`` and ``mv!rps <rock/paper/scissors>``',inline = False)
       embed.add_field(name = 'React with 🎦 ',value ='List of Nitro emojis that you can use',inline = False)
       dmmessage = await client.send_message(author,embed=embed)
-      reaction1 = '🇲'
-      reaction2 = '🇬'
       reaction4 = '🎦'
-      await client.add_reaction(dmmessage, reaction1)
-      await client.add_reaction(dmmessage, reaction2)
       await client.add_reaction(dmmessage, reaction4)
       await client.say('📨 Check DMs For Information')
       
