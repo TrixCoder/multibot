@@ -543,7 +543,7 @@ async def everyone(ctx, channel: discord.Channel=None, *, msg: str=None):
 async def timer(ctx,timer=None,channel: discord.Channel=None, *, msg: str=None):
     member = ctx.message.author
     if channel is None or msg is None:
-        await client.say('Invalid args. Use this command like ``mv!announce timer #channel text here``')
+        await client.say('Invalid args. Use this command like ``mv!announce timer <time in minutes> #channel text here``. Ex: ``mv!announce timer 1 #channel hi`` to announce hi after 1min without everyone ping')
         return
     else:
         if member.server_permissions.administrator == False:
@@ -563,7 +563,7 @@ async def timer(ctx,timer=None,channel: discord.Channel=None, *, msg: str=None):
 async def timereveryone(ctx,timer=None,channel: discord.Channel=None, *, msg: str=None):
     member = ctx.message.author
     if channel is None or msg is None:
-        await client.say('Invalid args. Use this command like ``mv!announce timereveryone #channel text here``')
+        await client.say('Invalid args. Use this command like ``mv!announce timereveryone #channel text here``. Ex: ``mv!announce timereveryone 1 #channel hi`` to announce hi after 1min with everyone ping')
         return
     else:
         if member.server_permissions.administrator == False:
