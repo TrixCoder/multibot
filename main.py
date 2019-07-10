@@ -543,7 +543,7 @@ async def everyone(ctx, channel: discord.Channel=None, *, msg: str=None):
 async def timer(ctx,timer=None,channel: discord.Channel=None, *, msg: str=None):
     member = ctx.message.author
     if channel is None or msg is None:
-        await client.say('Invalid args. Use this command like ``mv!announce everyone #channel text here``')
+        await client.say('Invalid args. Use this command like ``mv!announce timer #channel text here``')
         return
     else:
         if member.server_permissions.administrator == False:
@@ -563,7 +563,7 @@ async def timer(ctx,timer=None,channel: discord.Channel=None, *, msg: str=None):
 async def timereveryone(ctx,timer=None,channel: discord.Channel=None, *, msg: str=None):
     member = ctx.message.author
     if channel is None or msg is None:
-        await client.say('Invalid args. Use this command like ``mv!announce everyone #channel text here``')
+        await client.say('Invalid args. Use this command like ``mv!announce timereveryone #channel text here``')
         return
     else:
         if member.server_permissions.administrator == False:
@@ -1173,7 +1173,7 @@ async def help(ctx):
       embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
       embed.set_author(name='Help')
       embed.set_image(url = 'https://image.ibb.co/caM2BK/help.gif')
-      embed.add_field(name = 'Mod Commands',value ='``mv!kick @user``, ``mv!ban @user``, ``mv!unban userid``, ``mv!say anything``, ``mv!embed anything``, ``mv!roleinfo rolename``, ``mv!userinfo @user``, ``mv!setnick @user newnick``, ``mv!role @user rolename``, ``mv!resetnick @user``, ``mv!dm @user message``, ``mv!membercount``, ``mv!lock`` or ``mv!lock #channel``, ``mv!unlock`` or ``mv!unlock #channel``, ``mv!announce #channel message`` or ``mv!announce everyone #channel message``, ``mv!mute @user <time in minutes>`` __EX:__``mv!mute @user 1`` for 1min mute, ``mv!unmute @user``, ``mv!purge <amount of message to purge>``, ``mv!rules @user violation``, ``mv!norole @user``, ``mv!addchannel channelname``, ``mv!delchannel #channel``, ``mv!mention rolename`` and ``mv!serverinfo``',inline = False)
+      embed.add_field(name = 'Mod Commands',value ='``mv!kick @user``, ``mv!ban @user``, ``mv!unban userid``, ``mv!say anything``, ``mv!embed anything``, ``mv!roleinfo rolename``, ``mv!userinfo @user``, ``mv!setnick @user newnick``, ``mv!role @user rolename``, ``mv!resetnick @user``, ``mv!dm @user message``, ``mv!membercount``, ``mv!lock`` or ``mv!lock #channel``, ``mv!unlock`` or ``mv!unlock #channel``, ``mv!announce #channel message`` or ``mv!announce everyone #channel message`` or ``mv!announce timer <time in minutes> #channel message`` or ``mv!announce timereveryone <time in minutes> #channel message``, ``mv!mute @user <time in minutes>`` __EX:__``mv!mute @user 1`` for 1min mute, ``mv!unmute @user``, ``mv!purge <amount of message to purge>``, ``mv!rules @user violation``, ``mv!norole @user``, ``mv!addchannel channelname``, ``mv!delchannel #channel``, ``mv!mention rolename`` and ``mv!serverinfo``',inline = False)
       embed.add_field(name = 'Community Commands ',value ='``mv!google anything``, ``mv!youtuber anything``, ``mv!invites``, ``mv!remind <time in minutes> <what to remind>``__EX:__``mv!remind 1 drink water`` to get reminder in 1min for drinking water, ``mv!avatar``, ``mv!ping``, ``mv!poll Question option1 option2...option9``, ``mv!github respo name``, ``mv!happybirthday @user``, ``mv!joke``, ``mv!kiss @user``, ``mv!hug @user``, ``mv!slap @user``, ``mv!meme``, ``mv!rolldice``, ``mv!movie movie name`` and ``mv!rps <rock/paper/scissors>``',inline = False)
       embed.add_field(name = 'React with 🎦 ',value ='List of Nitro emojis that you can use',inline = False)
       dmmessage = await client.send_message(author,embed=embed)
