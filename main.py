@@ -539,6 +539,47 @@ async def everyone(ctx, channel: discord.Channel=None, *, msg: str=None):
             await client.send_message(channel, embed=embed)
             await client.delete_message(ctx.message)
 
+@announce.command(pass_context=True)
+async def timer(ctx,timer=None,channel: discord.Channel=None, *, msg: str=None):
+    member = ctx.message.author
+    if channel is None or msg is None:
+        await client.say('Invalid args. Use this command like ``mv!announce everyone #channel text here``')
+        return
+    else:
+        if member.server_permissions.administrator == False:
+            await client.say('**You do not have permission to use this command**')
+            return
+        else:
+            mutetime =int(timer)
+            mutetime = mutetime * 60
+            output = mutetime/60
+            r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+            embed=discord.Embed(title="Announcement", description="{}".format(msg), color = discord.Color((r << 16) + (g << 8) + b))
+            await client.delete_message(ctx.message)
+            await asyncio.sleep(mutetime)
+            await client.send_message(channel, embed=embed)
+		
+@announce.command(pass_context=True)
+async def timereveryone(ctx,timer=None,channel: discord.Channel=None, *, msg: str=None):
+    member = ctx.message.author
+    if channel is None or msg is None:
+        await client.say('Invalid args. Use this command like ``mv!announce everyone #channel text here``')
+        return
+    else:
+        if member.server_permissions.administrator == False:
+            await client.say('**You do not have permission to use this command**')
+            return
+        else:
+            mutetime =int(timer)
+            mutetime = mutetime * 60
+            output = mutetime/60
+            r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+            embed=discord.Embed(title="Announcement", description="{}".format(msg), color = discord.Color((r << 16) + (g << 8) + b))
+            await client.delete_message(ctx.message)
+            await asyncio.sleep(mutetime)
+            await client.send_message(channel, '@everyone')
+            await client.send_message(channel, embed=embed)
+            
 	
 @client.command(pass_context = True)
 async def delchannel(ctx, channel: discord.Channel=None):
