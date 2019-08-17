@@ -85,7 +85,7 @@ async def on_reaction_add(reaction, user):
 @client.event
 async def on_message(message):
     await client.process_commands(message)
-    channel = client.get_channel('518710986799316992')
+    channel = client.get_channel('611506308838850580')
     if message.server is None and message.author != client.user:
         r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
         embed=discord.Embed(title=f"{message.author.name} sent", description=f"{message.content}", color = discord.Color((r << 16) + (g << 8) + b))
