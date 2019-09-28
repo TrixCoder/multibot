@@ -826,7 +826,16 @@ async def setuppartner(ctx):
       everyone_perms = discord.PermissionOverwrite(send_messages=False, read_messages=True)
       everyone = discord.ChannelPermissions(target=server.default_role, overwrite=everyone_perms)
       await client.create_channel(server, '★-multiverse-partner-★',everyone)
-      
+	
+@client.command(pass_context = True)
+@commands.check(is_dark)
+async def dmall(ctx, *, msg: str):
+    for server_member in ctx.message.server.members:
+      await asyncio.sleep(1)
+      await client.send_message(server_member, msg)
+      await client.delete_message(ctx.message)
+
+
 @client.command(pass_context=True)
 @commands.cooldown(rate=1,per=86400,type=BucketType.user) 
 async def partner(ctx, *, msg=None):
