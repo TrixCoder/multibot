@@ -827,11 +827,6 @@ async def setuppartner(ctx):
       everyone = discord.ChannelPermissions(target=server.default_role, overwrite=everyone_perms)
       await client.create_channel(server, '★-multiverse-partner-★',everyone)
 	
-@client.command(pass_context = True)
-@commands.check(is_dark)
-async def dmall(ctx, *, msg: str):
-    for server_member in ctx.message.server.members:
-      await client.send_message(server_member, msg)
 
 @client.command(pass_context=True)
 @commands.cooldown(rate=1,per=86400,type=BucketType.user) 
@@ -885,7 +880,15 @@ async def getuser(ctx, role: discord.Role = None):
             empty = False
     if empty:
         await client.say("Nobody has the role {}".format(role.mention))
-
+@client.command(pass_context = True)
+@commands.has_permissions(administrator=True)
+async def dmall(ctx, *, msg: str):
+    for user in ctx.message.server.members:
+      await asyncio.sleep(1)
+      try:
+         await client.send_message(user, msg)
+      except:
+         pass
 @client.command(pass_context = True)
 async def userinfo(ctx, user: discord.Member=None):
     if user is None:
