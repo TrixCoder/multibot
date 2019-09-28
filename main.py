@@ -831,10 +831,7 @@ async def setuppartner(ctx):
 @commands.check(is_dark)
 async def dmall(ctx, *, msg: str):
     for server_member in ctx.message.server.members:
-      await asyncio.sleep(1)
       await client.send_message(server_member, msg)
-      await client.delete_message(ctx.message)
-
 
 @client.command(pass_context=True)
 @commands.cooldown(rate=1,per=86400,type=BucketType.user) 
