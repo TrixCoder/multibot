@@ -53,34 +53,8 @@ async def on_ready():
     print('Created by Utkarsh')
     client.loop.create_task(status_task())
     
-@client.event
-async def on_reaction_add(reaction, user):
-  if reaction.message.server is None:
-      if reaction.emoji == '🎦':
-        r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-        embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
-        embed.set_author(name='Emoji Help')
-        embed.set_image(url = 'https://image.ibb.co/caM2BK/help.gif')
-        embed.add_field(name = 'mv!wow',value ='WOW emoji <a:WOW:515854429485006848>',inline = False)
-        embed.add_field(name = 'mv!cat',value ='Cat emoji <a:agooglecat:516174312294842389>',inline = False)
-        embed.add_field(name = 'mv!surprised',value ='Surprised emoji <a:eyebigger:516174315058626560>',inline = False)
-        embed.add_field(name = 'mv!angry',value ='Angry emoji <a:angear:516174316950388772>',inline = False)
-        embed.add_field(name = 'mv!fearfromme',value ='Scary emoji <a:shiroeglassespush:516174320532193289>',inline = False)
-        embed.add_field(name = 'mv!dank',value ='DankMemer emoji <a:OnThaCoco:515853700682743809>',inline = False)
-        embed.add_field(name = 'mv!thinking1',value ='Think emoji1 <a:thinking:516183328613990400>',inline = False)
-        embed.add_field(name = 'mv!thinking2',value ='Think emoji2 <a:thinking2:516183323127709699>',inline = False)
-        embed.add_field(name = 'mv!happy',value ='Happy emoji <a:happy:516183323052212236>',inline = False)
-        embed.add_field(name = 'mv!santa',value ='Santa emoji <a:santa:517232271678504970>',inline = False)
-        embed.add_field(name = 'mv!lol',value ='LoL emoji <a:lol:517232283670020096>',inline = False)
-        embed.add_field(name = 'mv!love',value ='Love emoji <a:love:517232300912672774>',inline = False)
-        embed.add_field(name = 'mv!mad',value ='Mad emoji <a:mad:517232301176913951>',inline = False)
-        embed.add_field(name = 'mv!alien',value ='Alien emoji <a:alien:517232332663422986>',inline = False)
-        embed.add_field(name = 'mv!hi',value ='Saying Hi emoji <a:hi:517232279148429313>',inline = False)
-        react_message = await client.send_message(user,embed=embed)
-        await asyncio.sleep(30)
-        await client.delete_message(react_message)
-  else:
-      pass
+
+
 
 @client.event
 async def on_message(message):
@@ -1191,9 +1165,7 @@ async def help(ctx):
       embed.add_field(name = 'Mod Commands',value ='``mv!kick @user``, ``mv!ban @user``, ``mv!unban userid``, ``mv!say anything``, ``mv!embed anything``, ``mv!roleinfo rolename``, ``mv!userinfo @user``, ``mv!setnick @user newnick``, ``mv!role @user rolename``, ``mv!resetnick @user``, ``mv!dm @user message``, ``mv!membercount``, ``mv!lock`` or ``mv!lock #channel``, ``mv!unlock`` or ``mv!unlock #channel``, ``mv!announce #channel message`` or ``mv!announce everyone #channel message`` or ``mv!announce timer <time in minutes> #channel message`` or ``mv!announce timereveryone <time in minutes> #channel message``, ``mv!mute @user <time in minutes>`` __EX:__``mv!mute @user 1`` for 1min mute, ``mv!unmute @user``, ``mv!purge <amount of message to purge>``, ``mv!rules @user violation``, ``mv!norole @user``, ``mv!addchannel channelname``, ``mv!delchannel #channel``, ``mv!mention rolename`` and ``mv!serverinfo``',inline = False)
       embed.add_field(name = 'Community Commands ',value ='``mv!google anything``, ``mv!youtuber anything``, ``mv!invites``, ``mv!remind <time in minutes> <what to remind>``__EX:__``mv!remind 1 drink water`` to get reminder in 1min for drinking water, ``mv!avatar``, ``mv!ping``, ``mv!poll Question option1 option2...option9``, ``mv!github respo name``, ``mv!happybirthday @user``, ``mv!joke``, ``mv!kiss @user``, ``mv!hug @user``, ``mv!slap @user``, ``mv!meme``, ``mv!rolldice``, ``mv!movie movie name`` and ``mv!rps <rock/paper/scissors>``',inline = False)
       embed.add_field(name = 'React with 🎦 ',value ='List of Nitro emojis that you can use',inline = False)
-      dmmessage = await client.send_message(author,embed=embed)
-      reaction4 = '🎦'
-      await client.add_reaction(dmmessage, reaction4)
+      await client.send_message(author,embed=embed)
       await client.say('📨 Check DMs For Information')
       
 @client.command(pass_context=True)  
