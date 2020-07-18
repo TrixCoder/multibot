@@ -43,7 +43,6 @@ async def status_task():
 def is_dark(ctx):
     return ctx.message.author.id == "420525168381657090"
 
-	
 @client.event
 async def on_ready():
     print('Logged in as '+client.user.name+' (ID:'+client.user.id+') | Connected to '+str(len(client.servers))+' servers | Connected to '+str(len(set(client.get_all_members())))+' users')
@@ -52,9 +51,6 @@ async def on_ready():
     print('Started Our BOT')
     print('Created by Utkarsh')
     client.loop.create_task(status_task())
-    
-
-
 
 @client.event
 async def on_message(message):
