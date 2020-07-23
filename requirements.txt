@@ -1,4 +1,4 @@
-discord.py==0.16.0
+discord.py==0.16.6
 asyncio
 Status
 PyNaCl
