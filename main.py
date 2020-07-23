@@ -31,15 +31,6 @@ GIPHY_API_KEY = "dc6zaTOxFJmzC"
 
 
 client.remove_command('help')
-
-
-async def status_task():
-    while True:
-        await client.change_presence(game=discord.Game(name='mv!help', type=2))
-        await asyncio.sleep(30)
-        await client.change_presence(game=discord.Game(name=str(len(set(client.get_all_members())))+' users', type=3))
-        await asyncio.sleep(30)
-
 def is_dark(ctx):
     return ctx.message.author.id == "420525168381657090"
 
@@ -50,8 +41,8 @@ async def on_ready():
     print('--------')
     print('Started Our BOT')
     print('Created by Utkarsh')
-    client.loop.create_task(status_task())
-
+    client.change_presence(game=discord.Game(name=str(len(set(client.get_all_members())))+' users', type=3))
+    
 @client.event
 async def on_message(message):
     await client.process_commands(message)
